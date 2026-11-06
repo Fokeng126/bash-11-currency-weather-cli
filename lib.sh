@@ -6,5 +6,5 @@ die() {
 }
 
 curl_json() {
-    curl -fsS --max-time 10 "$1"
+    curl -fsS --max-time 10 "$1" 2>/dev/null
 }
