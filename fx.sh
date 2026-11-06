@@ -20,7 +20,6 @@ fi
 
 from=$(echo "$from" | tr '[:lower:]' '[:upper:]')
 to=$(echo "$to" | tr '[:lower:]' '[:upper:]')
-
 if ! [[ "$from" =~ ^[A-Z]{3}$ ]] || ! [[ "$to" =~ ^[A-Z]{3}$ ]]; then
     die "Currency codes must contain exactly 3 letters." 2
 fi
