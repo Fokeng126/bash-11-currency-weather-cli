@@ -16,11 +16,19 @@ The goal of this project is to create simple Bash scripts that can convert curre
 - awk
 - Public APIs
 
+## Requirements
+
+Make sure these tools are installed:
+
+- curl
+- jq
+- awk
+
 ## Screenshots
 
-![Currency Converter](image/currency.png)
+![Currency Converter](image/Currency.png)
 
-![Weather CLI](image/weather.png)
+![Weather CLI](image/Weather.png)
 
 ## Features
 
@@ -52,6 +60,12 @@ Run the weather script:
 ```bash
 ./meteo.sh Bamenda
 ```
+
+## Exit Codes
+
+- `0` - The script ran successfully.
+- `1` - A network or service error happened.
+- `2` - Invalid user input.
 
 ## Challenges Faced
 

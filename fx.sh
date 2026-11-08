@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# Finding the folder where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Load the shared helper functions from lib.sh
-source "./lib.sh"
+source "$SCRIPT_DIR/lib.sh" || exit 1
 
 # The values given by the user
 amount="$1"
@@ -40,6 +43,16 @@ data=$(curl_json "$url") || die "Could not connect to the exchange rate service.
 
 # Checking if the API request was successful
 result=$(echo "$data" | jq -r '.result')
+
+if [ "$result" != "success" ]; then
+     error_type=$(echo "$data" | jq -r '."error-type"')
+
+    if [ "$error_type" = "unsupported-code" ]; then
+        die "Unknown currency: $from" 2
+    fi
+
+    die "Could not get exchange rates." 1
+fi
 
 if [ "$result" != "success" ]; then
     die "Could not get exchange rates." 1

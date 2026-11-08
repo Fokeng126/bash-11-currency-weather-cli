@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Get the weather data from the API
-source "./lib.sh"
+# Finding the folder where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Load the shared helper functions from lib.sh
+source "$SCRIPT_DIR/lib.sh" || exit 1
 
 # Get the city from the user
 # If no city is given, use METEO_CITY or Yaounde
